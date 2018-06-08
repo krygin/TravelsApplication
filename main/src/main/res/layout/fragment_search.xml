@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".search.SearchFragment">
+
+
+    <fragment
+        android:id="@+id/fragment_navigation_host_search_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:navGraph="@navigation/navigation_graph_search_view"
+        app:defaultNavHost="false"/>
+
+    <Button
+        android:id="@+id/change_search_view_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change View" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/filters_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_filter_list_white_24dp"
+        app:layout_anchor="@id/fragment_navigation_host_search_view"
+        app:layout_anchorGravity="bottom|end" />
+</android.support.design.widget.CoordinatorLayout>

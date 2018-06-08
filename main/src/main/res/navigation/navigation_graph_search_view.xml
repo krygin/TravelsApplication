@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:startDestination="@id/mapSearchFragment">
+
+    <fragment
+        android:id="@+id/mapSearchFragment"
+        android:name="com.travels.android.main.search.map.MapSearchFragment"
+        android:label="MapSearchFragment" >
+        <action android:id="@+id/action_mapSearchFragment_to_listSearchFragment" app:destination="@id/listSearchFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/listSearchFragment"
+        android:name="com.travels.android.main.search.list.ListSearchFragment"
+        android:label="ListSearchFragment" >
+        <action android:id="@+id/action_listSearchFragment_to_mapSearchFragment" app:destination="@id/mapSearchFragment"/>
+    </fragment>
+
+</navigation>

@@ -1,0 +1,59 @@
+import com.travels.android.build_src.Dependencies
+import com.travels.android.build_src.Versions
+
+apply plugin: 'com.android.feature'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Versions.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+
+    }
+
+    buildTypes {
+       release {
+           minifyEnabled false
+           proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+       }
+    }
+
+}
+
+dependencies {
+    implementation(
+            project(':base')
+    )
+
+    implementation(
+            Dependencies.kotlinStdLib,
+            Dependencies.rxJava,
+            Dependencies.rxAndroid
+    )
+
+    //DAGGER
+    implementation(
+            Dependencies.dagger,
+            Dependencies.daggerAndroid,
+            Dependencies.daggerAndroidSupport
+    )
+
+    kapt(
+            Dependencies.daggerCompiler,
+            Dependencies.daggerAndroidCompiler
+    )
+}
+
+androidExtensions {
+    experimental true
+}

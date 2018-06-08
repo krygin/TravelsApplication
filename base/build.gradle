@@ -1,0 +1,78 @@
+import com.travels.android.build_src.Dependencies
+import com.travels.android.build_src.Versions
+
+apply plugin: 'com.android.feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Versions.compileSdkVersion
+    baseFeature true
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api(
+            Dependencies.appCompatV7
+    )
+
+    application project(':app')
+    feature project(':main')
+
+    implementation(
+            Dependencies.kotlinStdLib,
+
+    )
+
+    // RETROFIT
+    api(
+            Dependencies.moshiKotlin,
+            Dependencies.retrofitMoshiConverter,
+            Dependencies.okHttpLoggingInterceptor,
+            Dependencies.retrofitRxJavaAdapter,
+            Dependencies.retrofit
+    )
+
+    //LIFECYCLE
+    api(
+            Dependencies.androidArchitectureLifecycleExtensions,
+    )
+
+    kapt(
+            Dependencies.androidArchitectureLifecycleCompiler
+    )
+
+    // PERSISTENCE
+    api(
+            Dependencies.androidArchitecturePersistenceRoomRuntime
+    )
+
+    kapt(
+            Dependencies.androidArchitecturePersistenceRoomCompiler
+    )
+
+    //DAGGER
+    api(
+            Dependencies.dagger,
+            Dependencies.daggerAndroid,
+            Dependencies.daggerAndroidSupport
+    )
+
+    kapt(
+            Dependencies.daggerCompiler,
+            Dependencies.daggerAndroidCompiler
+    )
+
+
+}

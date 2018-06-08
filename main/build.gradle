@@ -1,0 +1,60 @@
+import com.travels.android.build_src.Dependencies
+import com.travels.android.build_src.Versions
+
+apply plugin: 'com.android.feature'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Versions.compileSdkVersion
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation(
+            project(':base')
+    )
+    implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha02'
+    implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0-alpha02'
+
+    implementation Dependencies.rxJava
+    implementation Dependencies.rxAndroid
+
+    // MAP
+    implementation(
+            Dependencies.googlePlayServicesMaps,
+            Dependencies.googlePlayServicesPlaces
+    )
+
+    // UI
+    implementation(
+            Dependencies.rxBindingKotlin,
+            Dependencies.rxBindingAppCompatV7Kotlin,
+            Dependencies.rxBindingSupportV4Kotlin
+    )
+
+    // ChipView
+    implementation 'com.github.tylersuehr7:chips-input-layout:2.3'
+
+
+}
+
+androidExtensions {
+    experimental true
+}
