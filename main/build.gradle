@@ -51,6 +51,7 @@ dependencies {
 
     // ChipView
     implementation 'com.github.tylersuehr7:chips-input-layout:2.3'
+    implementation project(":design:date-range-picker")
 
 
 }

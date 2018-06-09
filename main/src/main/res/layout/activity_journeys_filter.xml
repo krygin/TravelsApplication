@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -39,5 +40,18 @@
         android:gravity="center_vertical"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:text="Time"/>
+
+    <TextView
+        android:id="@+id/date_range_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        android:hint="Select date range"
+        tools:text="From 12.12.2018 to 21.12.2018"/>
 
 </LinearLayout>
