@@ -1,6 +1,5 @@
 package com.travels.android.main.search.filter
 
-import android.app.DatePickerDialog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.jakewharton.rxbinding2.view.clicks
@@ -10,8 +9,6 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_journeys_filter.*
 import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 
 class JourneysFilterActivity : AppCompatActivity() {
 

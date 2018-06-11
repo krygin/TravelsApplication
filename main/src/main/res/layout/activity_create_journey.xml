@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:text="Marshroute"/>
+
+    <com.travels.android.main.search.core.widget.RouteLayout
+        android:id="@+id/route_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:text="Interests"/>
+
+
+    <com.tylersuehr.chips.ChipsInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Add interesting locations"
+        app:chip_showDelete="true"/>
+
+
+</LinearLayout>

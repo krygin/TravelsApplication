@@ -13,9 +13,9 @@ import androidx.navigation.fragment.findNavController
 
 import com.travels.android.main.R
 import com.travels.android.main.R.id.filters_button
+import com.travels.android.main.search.create.CreateNewJourneyActivity
 import com.travels.android.main.search.filter.JourneysFilterActivity
-import kotlinx.android.synthetic.main.fragment_search.change_search_view_button
-import kotlinx.android.synthetic.main.fragment_search.filters_button
+import kotlinx.android.synthetic.main.fragment_search.*
 
 class SearchFragment : Fragment() {
 
@@ -45,11 +45,16 @@ class SearchFragment : Fragment() {
                 navController.navigate(R.id.action_listSearchFragment_to_mapSearchFragment)
             }
         }
+        create_new_journey_button.setOnClickListener {
+            val intent = Intent(context, CreateNewJourneyActivity::class.java)
+            startActivityForResult(intent, 2)
+        }
 
         filters_button.setOnClickListener {
             val intent = Intent(context, JourneysFilterActivity::class.java)
             startActivityForResult(intent, 1)
         }
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
