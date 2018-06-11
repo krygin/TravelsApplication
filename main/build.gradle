@@ -46,7 +46,8 @@ dependencies {
     implementation(
             Dependencies.rxBindingKotlin,
             Dependencies.rxBindingAppCompatV7Kotlin,
-            Dependencies.rxBindingSupportV4Kotlin
+            Dependencies.rxBindingSupportV4Kotlin,
+            Dependencies.rxRelay2
     )
 
     // ChipView

@@ -29,4 +29,9 @@ class SimpleItemTouchHelperCallback(private val mAdapter: ItemTouchHelperAdapter
         mAdapter.onItemDismiss(viewHolder.adapterPosition)
     }
 
+    override fun clearView(recyclerView: RecyclerView?, viewHolder: RecyclerView.ViewHolder?) {
+        super.clearView(recyclerView, viewHolder)
+        mAdapter.onMoveFinished()
+    }
+
 }
