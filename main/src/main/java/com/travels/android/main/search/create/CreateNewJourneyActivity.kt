@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.util.DiffUtil
+import android.support.v7.widget.Toolbar
 import com.travels.android.main.R
 import com.travels.android.main.search.core.Itinerary
 import com.travels.android.main.search.core.PointInfo
@@ -24,6 +25,10 @@ class CreateNewJourneyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_journey)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         viewModel = ViewModelProviders.of(this)
                 .get(CreateNewJourneyViewModel::class.java)
         viewModel.itiniary.observe(this, Observer {

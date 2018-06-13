@@ -57,5 +57,6 @@ object Dependencies {
     const val rxBindingKotlin = "com.jakewharton.rxbinding2:rxbinding-kotlin:$rxBindingVersion"
     const val rxBindingSupportV4Kotlin = "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rxBindingVersion"
     const val rxBindingAppCompatV7Kotlin = "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxBindingVersion"
+    const val rxRelay2 = "com.jakewharton.rxrelay2:rxrelay:2.0.0"
 
 }

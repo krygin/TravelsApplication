@@ -50,7 +50,7 @@ class RouteLayoutAdapter(private val startDragListener: OnStartDragListener) : R
 
     override fun onItemMove(fromPosition: Int, toPosition: Int) {
         val prev = routeList.removeAt(fromPosition)
-        routeList.add(if (toPosition > fromPosition) toPosition else toPosition - 1, prev)
+        routeList.add(if (toPosition > fromPosition) toPosition else toPosition, prev)
         notifyItemMoved(fromPosition, toPosition)
     }
 
