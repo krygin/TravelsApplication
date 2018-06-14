@@ -1,11 +1,9 @@
 package com.travels.android.main.search.create
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.util.DiffUtil
 import android.support.v7.widget.Toolbar
 import com.travels.android.main.R
 import com.travels.android.main.search.core.Itinerary
@@ -38,9 +36,10 @@ class CreateNewJourneyActivity : AppCompatActivity() {
         })
 
         val subscription = route_layout.routeChanges.subscribe {
-            val journey = viewModel.journey.value!!
-            journey.itinerary = Itinerary(it.map { PointInfo(it.place, it.date, it.date) })
-            viewModel.updateJourney(journey)
+            it?.let {
+                viewModel.updateJourneyRoutes(it.map { PointInfo(it.place!!, it.date, it.date) })
+            }
+
         }
         disposables.add(subscription)
     }

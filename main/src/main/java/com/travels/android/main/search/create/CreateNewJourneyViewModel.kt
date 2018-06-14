@@ -5,23 +5,29 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import com.travels.android.main.search.core.*
+import com.travels.android.main.search.core.widget.RouteItem
 import java.util.*
 
 class CreateNewJourneyViewModel : ViewModel() {
 
     val journey: MutableLiveData<Journey> = MutableLiveData()
 
-    val itiniary: LiveData<Itinerary> = Transformations.map(journey, { it.itinerary })
+    val itiniary: LiveData<Itinerary> = Transformations.map(this.journey, { it.itinerary })
 
     init {
-        journey.value = Journey(
+        this.journey.value = Journey(
                 "Original Title",
                 Itinerary(createDummyPointInfoList()),
                 "Original description")
     }
 
     fun updateJourney(updatedJourney: Journey) {
-        journey.value = updatedJourney
+        this.journey.value = updatedJourney
+    }
+
+    fun updateJourneyRoutes(updatedJourney: List<PointInfo>) {
+        val oldJourney = journey.value ?: return
+        journey.value = journey.value?.copy(itinerary = oldJourney.itinerary.copy(updatedJourney))
     }
 
 }

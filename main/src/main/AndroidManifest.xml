@@ -7,7 +7,6 @@
         android:required="true" />
 
     <application>
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA1ZWfeW3SRbXmO3S306Do8czXd7J3AtRI" />
@@ -29,17 +28,32 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".search.filter.JourneysFilterActivity"
             android:parentActivityName=".MainActivity" />
-
         <activity
             android:name=".search.create.CreateNewJourneyActivity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme">
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="travels.com"
+                    android:pathPattern="/.*"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
