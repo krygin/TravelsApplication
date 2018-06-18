@@ -26,11 +26,13 @@ object Dependencies {
     const val customTabs = "com.android.support:customtabs:$supportLibraryVersion"
 
     const val rxJava = "io.reactivex.rxjava2:rxjava:2.1.9"
+    const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:2.2.0"
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.0.2"
 
     const val androidArchitectureLifecycleExtensions = "android.arch.lifecycle:extensions:$androidArchitectureLifecycleVersion"
     const val androidArchitectureLifecycleViewModel = "android.arch.lifecycle:viewmodel:$androidArchitectureLifecycleVersion"
     const val androidArchitectureLifecycleLiveData = "android.arch.lifecycle:livedata:$androidArchitectureLifecycleVersion"
+    const val androidArchitectureLifecycleReactiveStreams = "android.arch.lifecycle:reactivestreams:$androidArchitectureLifecycleVersion"
     const val androidArchitectureLifecycleCompiler = "android.arch.lifecycle:compiler:$androidArchitectureLifecycleVersion"
 
     const val androidArchitecturePersistenceRoomRuntime = "android.arch.persistence.room:runtime:1.1.1-rc1"

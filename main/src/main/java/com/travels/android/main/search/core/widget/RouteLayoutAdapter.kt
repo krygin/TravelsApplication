@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -12,16 +11,28 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import com.jakewharton.rxrelay2.BehaviorRelay
 import com.travels.android.main.R
+import com.travels.android.main.search.core.Place
+import java.text.DateFormat
 import java.text.SimpleDateFormat
+import java.util.*
 
 
-class RouteLayoutAdapter(private val startDragListener: OnStartDragListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), ItemTouchHelperAdapter {
+class RouteLayoutAdapter(
+        private val startDragListener: OnStartDragListener,
+        private val onChangePlaceListener: (position: Int) -> Unit,
+        private val onChangeArrivalDateListener: (position: Int) -> Unit,
+        private val onChangeDepartureDateListener: (position: Int) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), ItemTouchHelperAdapter {
 
+    val routeChanges = BehaviorRelay.create<List<RouteItem>>()
+
+    private val dateFormat: DateFormat = SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT)
 
     private val data = mutableListOf<RouteItem>()
 
-    val routes get() = data.filter { it.place != null }
+    val routes get() = data.filter { it.place != null || it.arrivalDate != null || it.departureDate != null }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -41,6 +52,7 @@ class RouteLayoutAdapter(private val startDragListener: OnStartDragListener) : R
 
         when (holder) {
             is RouteViewHolder -> {
+                holder.placeContainer.setOnClickListener { onChangePlaceListener(holder.adapterPosition) }
                 item.place?.let {
                     holder.placeTextView.visibility = View.VISIBLE
                     holder.placeImageView.visibility = View.GONE
@@ -49,17 +61,28 @@ class RouteLayoutAdapter(private val startDragListener: OnStartDragListener) : R
                     holder.placeImageView.visibility = View.VISIBLE
                     holder.placeTextView.visibility = View.GONE
                 }
-                item.date?.let {
+
+                holder.arrivalDateContainer.setOnClickListener { onChangeArrivalDateListener(holder.adapterPosition) }
+                item.arrivalDate?.let {
                     holder.arrivalDateTextView.visibility = View.VISIBLE
                     holder.arrivalDateImageView.visibility = View.GONE
-                    holder.arrivalDateTextView.setText(SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT).format(it))
+                    holder.arrivalDateTextView.setText(dateFormat.format(it))
                 } ?: run {
                     holder.arrivalDateImageView.visibility = View.VISIBLE
                     holder.arrivalDateTextView.visibility = View.GONE
                 }
-                holder.reorderImageButton.setOnTouchListener { v, event ->
 
-                    Log.e("TOUCH EVENT", event.toString())
+                holder.departureDateContainer.setOnClickListener { onChangeDepartureDateListener(holder.adapterPosition) }
+                item.departureDate?.let {
+                    holder.departureDateTextView.visibility = View.VISIBLE
+                    holder.departureDateImageView.visibility = View.GONE
+                    holder.departureDateTextView.setText(dateFormat.format(it))
+                } ?: run {
+                    holder.departureDateImageView.visibility = View.VISIBLE
+                    holder.departureDateTextView.visibility = View.GONE
+                }
+
+                holder.reorderImageButton.setOnTouchListener { v, event ->
 
                     if (event.actionMasked == MotionEvent.ACTION_DOWN) {
                         startDragListener.onStartDrag(holder)
@@ -90,21 +113,46 @@ class RouteLayoutAdapter(private val startDragListener: OnStartDragListener) : R
     }
 
     override fun onMoveFinished() {
-        startDragListener.onMoveFinished()
+        acceptRouteListChanges()
     }
 
     fun setRoutes(routes: List<RouteItem>) {
         val diff = DiffUtil.calculateDiff(RouteDiffUtil(this.data.map { it }, routes))
         this.data.apply {
             clear()
-            addAll(routes.map { it })
+            addAll(routes)
         }
         diff.dispatchUpdatesTo(this)
     }
 
-    fun addRoute(routeItem: RouteItem) {
-        data.add(routeItem)
-        notifyItemInserted(data.size - 1)
+    fun updateRoutePlace(position: Int, place: Place) {
+        data[position] = data[position].copy(place = place)
+        notifyItemChanged(position)
+        acceptRouteListChanges()
+    }
+
+    fun updateRouteArrivalDate(position: Int, date: Date) {
+        data[position] = data[position].copy(arrivalDate = date)
+        notifyItemChanged(position)
+        acceptRouteListChanges()
+    }
+
+    fun updateRouteDepartureDate(position: Int, date: Date) {
+        data[position] = data[position].copy(departureDate = date)
+        notifyItemChanged(position)
+        acceptRouteListChanges()
+    }
+
+    fun getTheEarliestDate(): Date? {
+        return routes.filter { it.arrivalDate != null }.minBy { it.arrivalDate!! }?.arrivalDate
+    }
+
+    fun getTheLatestDate(): Date? {
+        return routes.filter { it.departureDate != null }.maxBy { it.departureDate!! }?.departureDate
+    }
+
+    private fun acceptRouteListChanges() {
+        routeChanges.accept(routes)
     }
 }
 
@@ -117,6 +165,11 @@ private class RouteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView
     val arrivalDateContainer = itemView.findViewById<FrameLayout>(R.id.arrival_date_container)
     val arrivalDateTextView = itemView.findViewById<TextView>(R.id.arrival_date_text_view)
     val arrivalDateImageView = itemView.findViewById<ImageView>(R.id.arrival_date_image_view)
+
+    val departureDateContainer = itemView.findViewById<FrameLayout>(R.id.departure_date_container)
+    val departureDateTextView = itemView.findViewById<TextView>(R.id.departure_date_text_view)
+    val departureDateImageView = itemView.findViewById<ImageView>(R.id.departure_date_image_view)
+
     val reorderImageButton = itemView.findViewById<ImageView>(R.id.reorder_image_button)
 
     companion object {

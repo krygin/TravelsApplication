@@ -30,7 +30,7 @@ dependencies {
     application project(':app')
     feature project(':main')
 
-    implementation(
+    api(
             Dependencies.kotlinStdLib,
 
     )
@@ -47,6 +47,7 @@ dependencies {
     //LIFECYCLE
     api(
             Dependencies.androidArchitectureLifecycleExtensions,
+            Dependencies.androidArchitectureLifecycleReactiveStreams
     )
 
     kapt(
@@ -74,5 +75,11 @@ dependencies {
             Dependencies.daggerAndroidCompiler
     )
 
+    //RX
+    api(
+            Dependencies.rxJava,
+            Dependencies.rxAndroid,
+            Dependencies.rxKotlin
+    )
 
 }

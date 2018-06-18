@@ -1,18 +1,22 @@
 package com.travels.android.main.search.core.widget
 
+import android.app.DatePickerDialog
 import android.content.Context
-import android.support.v4.app.FragmentManager
 import android.support.v4.widget.NestedScrollView
-import android.support.v7.widget.AlertDialogLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.util.AttributeSet
 import android.widget.FrameLayout
-import android.support.v7.widget.helper.ItemTouchHelper
-import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
 import com.jakewharton.rxrelay2.BehaviorRelay
-import com.travels.android.main.R
+import com.travels.android.main.search.core.Place
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.plusAssign
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class RouteLayout @JvmOverloads constructor(
@@ -21,18 +25,32 @@ class RouteLayout @JvmOverloads constructor(
         defStyleAttr: Int = 0
 ) : NestedScrollView(context, attrs, defStyleAttr), OnStartDragListener {
 
-    val routeChanges = BehaviorRelay.create<List<RouteItem>>()
+    private val dateFormat: DateFormat = SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT)
+
+    private val disposables = CompositeDisposable()
+
+    val routeChanges
+        get() = routeLayoutAdapter.routeChanges
+
+    val placePickerEditTextChanges = BehaviorRelay.create<CharSequence>()
 
     override fun onStartDrag(viewHolder: RecyclerView.ViewHolder) {
         itemTouchHelper.startDrag(viewHolder);
     }
 
     private val routesRecyclerView: RecyclerView
-    private val addRouteButton: Button
+    private val dateRangeSummaryTextView: TextView
 
-    private val routeLayoutAdapter = RouteLayoutAdapter(this)
+    private val routeLayoutAdapter = RouteLayoutAdapter(
+            this,
+            { openSelectRouteDialog(it) },
+            { openSelectArrivalDateDialog(it) },
+            { openSelectDepartureDateDialog(it) }
+    )
 
     private val itemTouchHelper: ItemTouchHelper
+
+    private val selectPlaceDialog: SelectPlaceDialog
 
     init {
 
@@ -44,38 +62,64 @@ class RouteLayout @JvmOverloads constructor(
             isNestedScrollingEnabled = false
         }
 
-        addRouteButton = Button(context).apply {
+        dateRangeSummaryTextView = TextView(context).apply {
             layoutParams = LinearLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT)
-            text = context.getString(R.string.add_new_route)
-            setOnClickListener { openNewRouteDialog() }
+
         }
 
-//        val container = LinearLayout(context).apply {
-//            orientation = LinearLayout.VERTICAL
-//            layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT)
-//            addView(routesRecyclerView)
-//            addView(addRouteButton)
-//        }
-        addView(routesRecyclerView)
+        val container = LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+            layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT)
+            addView(routesRecyclerView)
+            addView(dateRangeSummaryTextView)
+        }
+        addView(container)
 
         val callback = SimpleItemTouchHelperCallback(routeLayoutAdapter)
         itemTouchHelper = ItemTouchHelper(callback)
         itemTouchHelper.attachToRecyclerView(routesRecyclerView)
-    }
 
-    override fun onMoveFinished() {
-        routeChanges.accept(routeLayoutAdapter.routes)
+
+        disposables += routeLayoutAdapter.routeChanges.subscribe {
+            val suggestedEarliestDate = routeLayoutAdapter.getTheEarliestDate() ?: ""
+            val suggestedLatestDate = routeLayoutAdapter.getTheLatestDate() ?: ""
+            dateRangeSummaryTextView.text = String.format("from ${dateFormat.format(suggestedEarliestDate)} to ${dateFormat.format(suggestedLatestDate)}")
+        }
+
+        selectPlaceDialog = SelectPlaceDialog(context).apply {
+            searchEditTextChanges().filter { it.length > 2 }.subscribe { placePickerEditTextChanges.accept(it) }
+        }
     }
 
     fun setRoutes(routes: List<RouteItem>) {
-        val newList = listOf(*routes.toTypedArray(), RouteItem(null, null))
+        val newList = listOf(*routes.toTypedArray(), RouteItem(null, null, null))
         routeLayoutAdapter.setRoutes(newList)
     }
 
-    private fun openNewRouteDialog() {
-        CreateOrUpdateRouteDialog(context, { routeItem ->
-            routeLayoutAdapter.addRoute(routeItem)
-            routeChanges.accept(routeLayoutAdapter.routes)
-        }).show()
+    fun setPlaces(list: List<Place>) {
+        selectPlaceDialog.setPlaces(list)
+    }
+
+    private fun openSelectRouteDialog(position: Int) {
+        selectPlaceDialog.setOnSelectPlaceListener {
+            routeLayoutAdapter.updateRoutePlace(position, it)
+        }
+        selectPlaceDialog.show()
+    }
+
+    private fun openSelectArrivalDateDialog(position: Int) {
+        DatePickerDialog(context, { view, year, month, dayOfMonth ->
+            routeLayoutAdapter.updateRouteArrivalDate(position, Calendar.getInstance().apply {
+                set(year, month, dayOfMonth)
+            }.time)
+        }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).show()
+    }
+
+    private fun openSelectDepartureDateDialog(position: Int) {
+        DatePickerDialog(context, { view, year, month, dayOfMonth ->
+            routeLayoutAdapter.updateRouteDepartureDate(position, Calendar.getInstance().apply {
+                set(year, month, dayOfMonth)
+            }.time)
+        }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).show()
     }
 }

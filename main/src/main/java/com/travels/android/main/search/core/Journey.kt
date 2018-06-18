@@ -6,7 +6,7 @@ data class Journey(var title: String, var itinerary: Itinerary, var description:
 
 data class Itinerary(var places: List<PointInfo>)
 
-data class PointInfo(val place: Place, val arrival: Date?, val departure: Date?)
+data class PointInfo(val place: Place?, val arrival: Date?, val departure: Date?)
 
 data class Place(val location: Location, var name: String)
 
