@@ -1,3 +1,5 @@
+rootProject.buildFileName = 'build.gradle.kts'
+
 include ':main', ':app', ':base', ':instantapp', ':auth'
 
 include ':design:date-range-picker'

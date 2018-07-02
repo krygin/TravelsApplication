@@ -7,17 +7,19 @@ object Versions {
 }
 
 object Dependencies {
-    private const val kotlinVersion = "1.2.41"
-    private const val androidPluginVersion = "3.2.0-alpha16"
+//    private val kotlinVersion: String by System.getProperties()
+//    private val androidPluginVersion: String by System.getProperties()
+    private val kotlinVersion = "1.2.50"
+    private val androidPluginVersion = "3.2.0-beta02"
     private const val supportLibraryVersion = "27.1.1"
     private const val googlePlayServicesVersion = "12.0.0"
     private const val androidArchitectureLifecycleVersion = "1.1.1"
     private const val daggerVersion = "2.15"
     private const val rxBindingVersion = "2.1.1"
 
-    const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-    const val androidPlugin = "com.android.tools.build:gradle:$androidPluginVersion"
-    const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    val androidPlugin = "com.android.tools.build:gradle:$androidPluginVersion"
+    val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
     const val appCompatV7 = "com.android.support:appcompat-v7:$supportLibraryVersion"
     const val design = "com.android.support:design:$supportLibraryVersion"

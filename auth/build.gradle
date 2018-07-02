@@ -2,11 +2,8 @@ import com.travels.android.build_src.Dependencies
 import com.travels.android.build_src.Versions
 
 apply plugin: 'com.android.feature'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -17,14 +14,11 @@ android {
         targetSdkVersion Versions.targetSdkVersion
         versionCode 1
         versionName "1.0"
-
-
     }
 
     buildTypes {
        release {
            minifyEnabled false
-           proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
        }
     }
 
