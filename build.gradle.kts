@@ -1,4 +1,5 @@
 import com.android.build.gradle.FeaturePlugin
+import com.android.build.gradle.LibraryPlugin
 import com.travels.android.build_src.Versions
 import com.travels.android.build_src.plugins.AnyAndroidPlugin
 import com.travels.android.build_src.plugins.ApplicationPlugin
@@ -34,11 +35,11 @@ val clean by tasks.creating(Delete::class) {
 }
 
 subprojects.withType<AnyAndroidPlugin> { project, plugin ->
-    plugins {
-        id("kotlin-android")
-        id("kotlin-extensions")
-    }
     with(project) {
+        apply {
+            plugin("kotlin-android")
+            plugin("kotlin-android-extensions")
+        }
         extensions.android {
             compileSdkVersion(Versions.compileSdkVersion)
             defaultConfig {
@@ -50,7 +51,7 @@ subprojects.withType<AnyAndroidPlugin> { project, plugin ->
 
             buildTypes {
                 getByName("release") {
-                    setMinifyEnabled(false)
+                    isMinifyEnabled = false
                 }
             }
         }
