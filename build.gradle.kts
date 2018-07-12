@@ -1,3 +1,10 @@
+import com.android.build.gradle.FeaturePlugin
+import com.travels.android.build_src.Versions
+import com.travels.android.build_src.plugins.AnyAndroidPlugin
+import com.travels.android.build_src.plugins.ApplicationPlugin
+import com.travels.android.build_src.util.withType
+import com.travels.android.build_src.util.android
+
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
@@ -24,4 +31,28 @@ allprojects {
 
 val clean by tasks.creating(Delete::class) {
     delete(rootProject.buildDir)
+}
+
+subprojects.withType<AnyAndroidPlugin> { project, plugin ->
+    plugins {
+        id("kotlin-android")
+        id("kotlin-extensions")
+    }
+    with(project) {
+        extensions.android {
+            compileSdkVersion(Versions.compileSdkVersion)
+            defaultConfig {
+                minSdkVersion(21)
+                targetSdkVersion(Versions.targetSdkVersion)
+                versionCode = 1
+                versionName = "1.0"
+            }
+
+            buildTypes {
+                getByName("release") {
+                    setMinifyEnabled(false)
+                }
+            }
+        }
+    }
 }

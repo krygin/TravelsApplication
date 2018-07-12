@@ -7,8 +7,8 @@ object Versions {
 }
 
 object Dependencies {
-    private val kotlinVersion: String by lazy { System.getProperty("kotlinVersion") }
-    private val androidPluginVersion: String by lazy { System.getProperty("androidPluginVersion") }
+    private val kotlinVersion = System.getProperty("kotlinVersion")
+    private val androidPluginVersion = System.getProperty("androidPluginVersion")
     private const val supportLibraryVersion = "27.1.1"
     private const val googlePlayServicesVersion = "12.0.0"
     private const val androidArchitectureLifecycleVersion = "1.1.1"

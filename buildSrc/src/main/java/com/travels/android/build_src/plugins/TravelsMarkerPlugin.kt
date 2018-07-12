@@ -10,16 +10,27 @@ abstract class AnyAndroidPlugin: TravelsMarkerPlugin()
 
 class ApplicationPlugin: AnyAndroidPlugin() {
     override fun apply(project: Project) {
+        project.apply {
+            plugin("com.android.application")
+        }
     }
 }
 
 class AndroidLibraryPlugin: AnyAndroidPlugin() {
     override fun apply(project: Project) {
+        project.apply {
+            plugin("com.android.library")
+            plugin("kotlin-android")
+        }
     }
 }
 
 class AndroidFeaturePlugin: AnyAndroidPlugin() {
-    override fun apply(target: Project) {
+    override fun apply(project: Project) {
+        project.apply {
+            plugin("com.android.feature")
+            plugin("kotlin-android")
+        }
     }
 }
 
