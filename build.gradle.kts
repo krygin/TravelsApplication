@@ -34,6 +34,11 @@ val clean by tasks.creating(Delete::class) {
     delete(rootProject.buildDir)
 }
 
+val wrapper by tasks.creating(Wrapper::class) {
+    version = "4.9.1-rc-1"
+    distributionType = Wrapper.DistributionType.BIN
+}
+
 subprojects.withType<AnyAndroidPlugin> { project, plugin ->
     with(project) {
         apply {
