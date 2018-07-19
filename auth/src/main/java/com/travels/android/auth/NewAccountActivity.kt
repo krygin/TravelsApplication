@@ -6,10 +6,8 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.travels.android.base.TravelsApplication
-import com.travels.android.base.di.ApplicationProvider
 
-class NewAccountActivity : AppCompatActivity(), OnAuthenticationResultListener, ApplicationProvider {
+class NewAccountActivity : AppCompatActivity(), OnAuthenticationResultListener {
 
     private var accountAuthenticatorResponse: AccountAuthenticatorResponse? = null
     private var resultBundle: Bundle? = null
@@ -42,6 +40,4 @@ class NewAccountActivity : AppCompatActivity(), OnAuthenticationResultListener, 
     override fun onFailure() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-
-    override fun provideApp(): TravelsApplication = application as TravelsApplication
 }

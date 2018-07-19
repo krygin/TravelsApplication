@@ -5,8 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import com.travels.android.base.TravelsApplication
-import com.travels.android.base.di.ApplicationProvider
+import com.travels.android.base.di.findComponentDependencies
 import com.travels.android.base.domain.Response
 import com.travels.android.main.R
 import com.travels.android.main.search.core.Itinerary
@@ -17,11 +16,9 @@ import com.travels.android.main.search.create.di.DaggerCreateNewJourneyComponent
 import com.travels.android.main.search.create.util.CreateNewJourneyViewModelFactory
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
-import kotlinx.android.synthetic.main.activity_create_journey.*
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class CreateNewJourneyActivity : AppCompatActivity(), ApplicationProvider {
+class CreateNewJourneyActivity : AppCompatActivity() {
 
     @Inject
     lateinit var createNewJourneyViewModelFactory: CreateNewJourneyViewModelFactory
@@ -34,7 +31,7 @@ class CreateNewJourneyActivity : AppCompatActivity(), ApplicationProvider {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        DaggerCreateNewJourneyComponent.builder().inject(this)
+        DaggerCreateNewJourneyComponent.builder().createNewJourneyDependencies(findComponentDependencies()).build().inject(this)
         setContentView(R.layout.activity_create_journey)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         val routeLayout = findViewById<RouteLayout>(R.id.route_layout)
@@ -62,13 +59,11 @@ class CreateNewJourneyActivity : AppCompatActivity(), ApplicationProvider {
             viewModel.getPlaces(it.toString())
         }
 
-        disposables += route_layout.routeChanges.subscribe {
+        disposables += findViewById<RouteLayout>(R.id.route_layout).routeChanges.subscribe {
             it?.let {
                 viewModel.updateJourneyRoutes(it.map { PointInfo(it.place, it.arrivalDate, it.departureDate) })
             }
 
         }
     }
-
-    override fun provideApp(): TravelsApplication = application as TravelsApplication
 }

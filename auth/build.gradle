@@ -2,6 +2,7 @@ import com.travels.android.build_src.Dependencies
 import com.travels.android.build_src.Versions
 
 apply plugin: 'com.travels.feature'
+apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 dependencies {
@@ -17,17 +18,10 @@ dependencies {
 
     //DAGGER
     implementation(
-            Dependencies.dagger,
-            Dependencies.daggerAndroid,
-            Dependencies.daggerAndroidSupport
+            Dependencies.dagger
     )
 
     kapt(
-            Dependencies.daggerCompiler,
-            Dependencies.daggerAndroidCompiler
+            Dependencies.daggerCompiler
     )
-}
-
-androidExtensions {
-    experimental true
 }

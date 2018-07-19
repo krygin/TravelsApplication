@@ -6,16 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.arch.lifecycle.ViewModelProviders
-
+import android.widget.Button
 
 import com.travels.android.main.R
-import kotlinx.android.synthetic.main.fragment_profile.vkLoginButton
 
 class ProfileFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = ProfileFragment()
-    }
 
     private lateinit var viewModel: ProfileViewModel
 
@@ -26,8 +21,10 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.vkLoginButton.setOnClickListener {
-//            it.findNavController().navigate()
+        view.findViewById<Button>(R.id.vkLoginButton).apply {
+            setOnClickListener {
+                //            it.findNavController().navigate()
+            }
         }
     }
 

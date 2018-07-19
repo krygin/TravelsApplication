@@ -14,6 +14,7 @@ object Dependencies {
     private const val androidArchitectureLifecycleVersion = "1.1.1"
     private const val daggerVersion = "2.15"
     private const val rxBindingVersion = "2.1.1"
+    private const val navigationVersion = "1.0.0-alpha03"
 
     val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     val androidPlugin = "com.android.tools.build:gradle:$androidPluginVersion"
@@ -37,6 +38,9 @@ object Dependencies {
 
     const val androidArchitecturePersistenceRoomRuntime = "android.arch.persistence.room:runtime:1.1.1-rc1"
     const val androidArchitecturePersistenceRoomCompiler = "android.arch.persistence.room:compiler:1.1.1-rc1"
+
+    const val androidArchitectureNavigationFragment = "android.arch.navigation:navigation-fragment-ktx:$navigationVersion"
+    const val androidArchitectureNavigationUI = "android.arch.navigation:navigation-ui-ktx:$navigationVersion"
 
     const val googlePlayServicesMaps = "com.google.android.gms:play-services-maps:$googlePlayServicesVersion"
     const val googlePlayServicesPlaces = "com.google.android.gms:play-services-places:$googlePlayServicesVersion"

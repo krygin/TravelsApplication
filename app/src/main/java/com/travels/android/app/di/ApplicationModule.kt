@@ -1,8 +1,9 @@
-package com.travels.android.base.di
+package com.travels.android.app.di
 
 import android.app.Application
 import android.content.Context
-import com.travels.android.base.TravelsApplication
+import com.travels.android.app.TravelsApplication
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

@@ -4,8 +4,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.travels.android.main.R
-import kotlinx.android.synthetic.main.journey_list_item.view.*
 
 class JourneysListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -37,7 +37,7 @@ class JourneysListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
 class JourneyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val nameTextView = itemView.name
+    val nameTextView = itemView.findViewById<TextView>(R.id.name)
 }
 
 class JourneyItem(val name: String)

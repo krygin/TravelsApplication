@@ -9,14 +9,13 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.travels.android.auth.di.DaggerAuthComponent
-import com.travels.android.base.di.ApplicationProvider
-import kotlinx.android.synthetic.main.fragment_auth.*
-import com.travels.android.base.TravelsApplication
+import com.travels.android.base.di.findComponentDependencies
 import com.travels.android.base.domain.Response
 import javax.inject.Inject
 
-class AuthFragment : Fragment(), ApplicationProvider {
+class AuthFragment : Fragment() {
     @Inject
     lateinit var authViewModelFactory: AuthViewModelFactory
 
@@ -27,7 +26,11 @@ class AuthFragment : Fragment(), ApplicationProvider {
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         onAuthenticationResultListener = context as OnAuthenticationResultListener
-        DaggerAuthComponent.builder().inject(this)
+        DaggerAuthComponent
+                .builder()
+                .authDependencies(findComponentDependencies())
+                .build()
+                .inject(this)
     }
 
 
@@ -49,11 +52,13 @@ class AuthFragment : Fragment(), ApplicationProvider {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        vkAuthButton.setOnClickListener {
-            val url = "https://oauth.vk.com/authorize?client_id=6368095&display=mobile&redirect_uri=http://oauth_callback&scope=friends&response_type=code&v=5.71"
-            val intent = Intent(context, OAuthWebViewActivity::class.java)
-                    .putExtra(EXTRA_AUTHORIZATION_CODE_URL, url)
-            startActivityForResult(intent, 1)
+        view.findViewById<Button>(R.id.vkAuthButton).apply {
+            setOnClickListener {
+                val url = "https://oauth.vk.com/authorize?client_id=6368095&display=mobile&redirect_uri=http://oauth_callback&scope=friends&response_type=code&v=5.71"
+                val intent = Intent(context, OAuthWebViewActivity::class.java)
+                        .putExtra(EXTRA_AUTHORIZATION_CODE_URL, url)
+                startActivityForResult(intent, 1)
+            }
         }
     }
 
@@ -82,8 +87,6 @@ class AuthFragment : Fragment(), ApplicationProvider {
         onAuthenticationResultListener = null
         super.onDetach()
     }
-
-    override fun provideApp(): TravelsApplication = activity?.application as TravelsApplication
 }
 
 interface OnAuthenticationResultListener {
