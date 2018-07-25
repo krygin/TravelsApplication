@@ -1,6 +1,6 @@
-package com.travels.android.main.search.core.widget
+package com.travels.android.design.widget
 
-import com.travels.android.main.search.core.Place
+import com.travels.android.design.widget.model.Place
 import io.reactivex.Observable
 
 interface PlaceListProvider {

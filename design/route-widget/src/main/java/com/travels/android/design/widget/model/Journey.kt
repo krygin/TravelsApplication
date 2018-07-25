@@ -1,4 +1,4 @@
-package com.travels.android.main.search.core
+package com.travels.android.design.widget.model
 
 import java.util.Date
 

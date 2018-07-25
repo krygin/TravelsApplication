@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/design" />
             <option value="$PROJECT_DIR$/design/date-range-picker" />
+            <option value="$PROJECT_DIR$/design/route-widget" />
             <option value="$PROJECT_DIR$/instantapp" />
             <option value="$PROJECT_DIR$/main" />
           </set>

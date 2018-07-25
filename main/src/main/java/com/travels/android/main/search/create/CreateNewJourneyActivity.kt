@@ -7,11 +7,11 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import com.travels.android.base.di.findComponentDependencies
 import com.travels.android.base.domain.Response
+import com.travels.android.design.widget.RouteItem
+import com.travels.android.design.widget.RouteLayout
+import com.travels.android.design.widget.model.Itinerary
+import com.travels.android.design.widget.model.PointInfo
 import com.travels.android.main.R
-import com.travels.android.main.search.core.Itinerary
-import com.travels.android.main.search.core.PointInfo
-import com.travels.android.main.search.core.widget.RouteItem
-import com.travels.android.main.search.core.widget.RouteLayout
 import com.travels.android.main.search.create.di.DaggerCreateNewJourneyComponent
 import com.travels.android.main.search.create.util.CreateNewJourneyViewModelFactory
 import io.reactivex.disposables.CompositeDisposable

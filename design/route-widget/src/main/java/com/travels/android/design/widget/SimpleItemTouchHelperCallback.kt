@@ -1,4 +1,4 @@
-package com.travels.android.main.search.core.widget
+package com.travels.android.design.widget
 
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
@@ -21,8 +21,12 @@ class SimpleItemTouchHelperCallback(private val mAdapter: ItemTouchHelperAdapter
 
     override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder,
                         target: RecyclerView.ViewHolder): Boolean {
-        mAdapter.onItemMove(viewHolder.adapterPosition, target.adapterPosition)
-        return true
+        if (target.adapterPosition == mAdapter.getItemCount() - 1) {
+            return false
+        } else {
+            mAdapter.onItemMove(viewHolder.adapterPosition, target.adapterPosition)
+            return true
+        }
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {

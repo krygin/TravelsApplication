@@ -1,4 +1,4 @@
-package com.travels.android.main.search.core.widget
+package com.travels.android.design.widget
 
 import android.app.DatePickerDialog
 import android.content.Context
@@ -11,7 +11,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.jakewharton.rxrelay2.BehaviorRelay
-import com.travels.android.main.search.core.Place
+import com.travels.android.design.widget.model.Place
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 import java.text.DateFormat

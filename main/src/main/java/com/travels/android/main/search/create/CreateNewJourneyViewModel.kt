@@ -5,8 +5,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import com.travels.android.base.domain.Response
-import com.travels.android.main.search.core.*
-import com.travels.android.main.search.core.widget.RouteItem
+import com.travels.android.design.widget.model.*
 import com.travels.android.main.search.create.domain.GetSuggestedPlacesUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

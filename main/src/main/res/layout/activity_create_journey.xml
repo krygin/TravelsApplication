@@ -38,7 +38,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                 android:text="Marshroute"/>
 
-            <com.travels.android.main.search.core.widget.RouteLayout
+            <com.travels.android.design.widget.RouteLayout
                 android:id="@+id/route_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -61,6 +61,20 @@
                 android:layout_height="wrap_content"
                 android:hint="Add interesting locations"
                 app:chip_showDelete="true"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:text="Interests"/>
+
+
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

@@ -1,7 +1,7 @@
 package com.travels.android.main.search.create.domain
 
-import com.travels.android.main.search.core.Location
-import com.travels.android.main.search.core.Place
+import com.travels.android.design.widget.model.Location
+import com.travels.android.design.widget.model.Place
 import com.travels.android.main.search.create.networking.PlacesApi
 import io.reactivex.Single
 

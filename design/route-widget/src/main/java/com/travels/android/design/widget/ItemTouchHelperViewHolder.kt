@@ -1,4 +1,4 @@
-package com.travels.android.main.search.core.widget
+package com.travels.android.design.widget
 
 interface ItemTouchHelperViewHolder {
 

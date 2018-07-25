@@ -14,8 +14,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
-import com.travels.android.main.search.core.Location
-import com.travels.android.main.search.core.Place
+import com.travels.android.design.widget.model.Location
+import com.travels.android.design.widget.model.Place
 
 class MapSearchFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap?) {

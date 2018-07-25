@@ -2,7 +2,6 @@ package com.travels.android.main
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.design.widget.NavigationView
 import android.support.v7.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
