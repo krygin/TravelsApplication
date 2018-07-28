@@ -25,7 +25,7 @@ class SearchFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val navController = childFragmentManager.findFragmentById(R.id.fragment_navigation_host_search_view).findNavController()
+        val navController = childFragmentManager.findFragmentById(R.id.fragment_navigation_host_search_view)!!.findNavController()
         view.findViewById<Button>(R.id.change_search_view_button).apply {
             setOnClickListener {
                 if (navController.currentDestination.id == R.id.mapSearchFragment) {

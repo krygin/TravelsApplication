@@ -1,15 +1,15 @@
 package com.travels.android.build_src
 
 object Versions {
-    const val compileSdkVersion = 27
+    const val compileSdkVersion = 28
     const val minSdkVersion = 21
-    const val targetSdkVersion = 27
+    const val targetSdkVersion = 28
 }
 
 object Dependencies {
     private val kotlinVersion = System.getProperty("kotlinVersion")
     private val androidPluginVersion = System.getProperty("androidPluginVersion")
-    private const val supportLibraryVersion = "27.1.1"
+    private const val supportLibraryVersion = "28.0.0-alpha3"
     private const val googlePlayServicesVersion = "12.0.0"
     private const val androidArchitectureLifecycleVersion = "1.1.1"
     private const val daggerVersion = "2.15"

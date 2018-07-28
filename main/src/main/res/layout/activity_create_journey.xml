@@ -53,7 +53,7 @@
                 android:textStyle="bold"
                 android:gravity="center_vertical"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:text="Interests"/>
+                android:text="Destinations"/>
 
 
             <com.tylersuehr.chips.ChipsInputLayout
@@ -72,9 +72,73 @@
                 android:textStyle="bold"
                 android:gravity="center_vertical"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:text="Interests"/>
+                android:text="Group Size"/>
+
+            <android.support.design.chip.ChipGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleLine="true"
+                app:singleSelection="true">
+
+                <android.support.design.chip.Chip
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Two"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"/>
+
+                <android.support.design.chip.Chip
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Three"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"/>
+
+                <android.support.design.chip.Chip
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Many"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"/>
 
 
+            </android.support.design.chip.ChipGroup>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:text="Gender Identity"/>
+
+            <android.support.design.chip.ChipGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleLine="true"
+                app:singleSelection="true">
+
+                <android.support.design.chip.Chip
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Boys"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"/>
+
+                <android.support.design.chip.Chip
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Girls"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"/>
+
+                <android.support.design.chip.Chip
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No matter"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"/>
+
+            </android.support.design.chip.ChipGroup>
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
