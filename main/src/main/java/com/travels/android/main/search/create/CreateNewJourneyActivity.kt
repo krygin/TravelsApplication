@@ -59,7 +59,7 @@ class CreateNewJourneyActivity : AppCompatActivity() {
             viewModel.getPlaces(it.toString())
         }
 
-        disposables += findViewById<RouteLayout>(R.id.route_layout).routeChanges.subscribe {
+        disposables += routeLayout.routeChanges.subscribe {
             it?.let {
                 viewModel.updateJourneyRoutes(it.map { PointInfo(it.place, it.arrivalDate, it.departureDate) })
             }
