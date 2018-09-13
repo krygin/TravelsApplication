@@ -54,23 +54,10 @@ class SelectPlaceDialog(context: Context) : AlertDialog(context) {
     }
 
     fun setPlaces(places: List<Place>) {
-        placesListView.adapter = SimpleAdapter(context, places.map { mapOf(Pair("KEY_NAME", it.name)) }, android.R.layout.simple_list_item_1, arrayOf("KEY_NAME"), arrayListOf(android.R.id.text1).toIntArray())
+        placesListView.adapter = SimpleAdapter(context, places.map { mapOf(Pair("KEY_NAME", it.title)) }, android.R.layout.simple_list_item_1, arrayOf("KEY_NAME"), arrayListOf(android.R.id.text1).toIntArray())
         placesListView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-            onSelectPlace?.invoke(Place(Location(0.0, 0.0), (placesListView.adapter.getItem(position) as Map<String, String>).getValue("KEY_NAME")))
+            onSelectPlace?.invoke(Place((placesListView.adapter.getItem(position) as Map<String, String>).getValue("KEY_NAME"), Location(0.0, 0.0)))
             dismiss()
         }
     }
 }
-
-private val DUMMY_ROUTE_LIST = listOf(
-        Place(Location(0.0, 0.0), "Смоленск"),
-        Place(Location(0.0, 0.0), "Сан-Франциско"),
-        Place(Location(0.0, 0.0), "Лиссабон"),
-        Place(Location(0.0, 0.0), "Мюнхен"),
-        Place(Location(0.0, 0.0), "Амстердам"),
-        Place(Location(0.0, 0.0), "Роттердам"),
-        Place(Location(0.0, 0.0), "Марсель"),
-        Place(Location(0.0, 0.0), "Пекин"),
-        Place(Location(0.0, 0.0), "Сидней"),
-        Place(Location(0.0, 0.0), "Токио")
-)

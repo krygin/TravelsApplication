@@ -5,5 +5,6 @@ include(
         ":instantapp",
         ":auth",
         ":design:date-range-picker",
-        ":design:route-widget"
+        ":design:route-widget",
+        ":api"
 )

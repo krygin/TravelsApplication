@@ -9,12 +9,12 @@ object Versions {
 object Dependencies {
     private val kotlinVersion = System.getProperty("kotlinVersion")
     private val androidPluginVersion = System.getProperty("androidPluginVersion")
-    private const val supportLibraryVersion = "28.0.0-alpha3"
-    private const val googlePlayServicesVersion = "12.0.0"
+    private const val supportLibraryVersion = "28.0.0-rc02"
+    private const val googlePlayServicesVersion = "16.0.2"
     private const val androidArchitectureLifecycleVersion = "1.1.1"
     private const val daggerVersion = "2.15"
     private const val rxBindingVersion = "2.1.1"
-    private const val navigationVersion = "1.0.0-alpha03"
+    private const val navigationVersion = "1.0.0-alpha05"
 
     val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     val androidPlugin = "com.android.tools.build:gradle:$androidPluginVersion"
@@ -42,8 +42,8 @@ object Dependencies {
     const val androidArchitectureNavigationFragment = "android.arch.navigation:navigation-fragment-ktx:$navigationVersion"
     const val androidArchitectureNavigationUI = "android.arch.navigation:navigation-ui-ktx:$navigationVersion"
 
-    const val googlePlayServicesMaps = "com.google.android.gms:play-services-maps:$googlePlayServicesVersion"
-    const val googlePlayServicesPlaces = "com.google.android.gms:play-services-places:$googlePlayServicesVersion"
+    const val googlePlayServicesMaps = "com.google.android.gms:play-services-maps:15.0.1"
+    const val googlePlayServicesPlaces = "com.google.android.gms:play-services-places:15.0.1"
 
     const val retrofit = "com.squareup.retrofit2:retrofit:2.3.0"
     const val retrofitRxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:2.3.0"

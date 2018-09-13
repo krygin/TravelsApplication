@@ -8,6 +8,6 @@ data class Itinerary(var places: List<PointInfo>)
 
 data class PointInfo(val place: Place?, val arrival: Date?, val departure: Date?)
 
-data class Place(val location: Location, var name: String)
+data class Place(var title: String, val location: Location)
 
 data class Location(val lat: Double, val lng: Double)

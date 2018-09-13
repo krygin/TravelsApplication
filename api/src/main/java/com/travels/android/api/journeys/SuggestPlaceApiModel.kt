@@ -1,13 +1,8 @@
-package com.travels.android.main.search.create.networking
+package com.travels.android.api.journeys
 
 import com.squareup.moshi.Json
 
-data class PlacesResponse(
-        @Json(name = "status") val status: String,
-        @Json(name = "data") val places: List<Place>
-)
-
-data class Place(
+data class SuggestPlaceApiModel(
         @Json(name = "place_id") val googlePlaceId: String,
         @Json(name = "id") val id: String,
         @Json(name = "inputs") val inputs: List<String>,

@@ -46,7 +46,7 @@ class ListSearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.findViewById<RecyclerView>(R.id.recyclerView).apply {
             adapter = journeysListAdapter
-            adapter.notifyDataSetChanged()
+            adapter?.notifyDataSetChanged()
         }
     }
 

@@ -56,7 +56,7 @@ class RouteLayoutAdapter(
                 item.place?.let {
                     holder.placeTextView.visibility = View.VISIBLE
                     holder.placeImageView.visibility = View.GONE
-                    holder.placeTextView.setText(it.name)
+                    holder.placeTextView.setText(it.title)
                 } ?: run {
                     holder.placeImageView.visibility = View.VISIBLE
                     holder.placeTextView.visibility = View.GONE

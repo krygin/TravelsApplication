@@ -14,8 +14,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
-import com.travels.android.design.widget.model.Location
-import com.travels.android.design.widget.model.Place
+import com.travels.android.main.search.create.domain.Location
+import com.travels.android.main.search.create.domain.Place
 
 class MapSearchFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap?) {
@@ -28,7 +28,7 @@ class MapSearchFragment : Fragment(), OnMapReadyCallback {
         googleMap?.addPolyline(polylineOptions)
 
         places.forEach {
-            googleMap?.addMarker(MarkerOptions().position(LatLng(it.location.lat, it.location.lng)).title(it.name))
+            googleMap?.addMarker(MarkerOptions().position(LatLng(it.location.lat, it.location.lng)).title(it.title))
         }
     }
 
@@ -56,9 +56,9 @@ class MapSearchFragment : Fragment(), OnMapReadyCallback {
     }
 }
 
-private val places = listOf<Place>(
-        Place(Location(55.45, 37.37), "Москва"),
-        Place(Location(52.31, 13.23), "Берлин"),
-        Place(Location(48.50, 2.20), "Париж"),
-        Place(Location(41.00, 28.57), "Стамбул")
+private val places = listOf(
+        Place("", "Москва", Location(55.45, 37.37)),
+        Place("", "Берлин", Location(52.31, 13.23)),
+        Place("", "Париж", Location(48.50, 2.20)),
+        Place("", "Стамбул", Location(41.00, 28.57))
 )

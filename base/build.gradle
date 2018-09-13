@@ -4,10 +4,19 @@ apply plugin: 'com.travels.feature'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
+android {
+
+    defaultConfig {
+        baseFeature true
+
+    }
+}
+
 dependencies {
     api(
             Dependencies.appCompatV7,
             Dependencies.kotlinStdLib,
+            Dependencies.design,
             "com.google.code.findbugs:jsr305:3.0.2"
     )
 

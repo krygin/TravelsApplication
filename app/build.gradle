@@ -38,6 +38,7 @@ dependencies {
             project(':main'),
             project(':auth'),
             project(':base'),
+            project(':api'),
             Dependencies.dagger
     )
 

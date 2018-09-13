@@ -13,6 +13,7 @@
         <meta-data
             android:name="aia-compat-api-min-version"
             android:value="1" />
+
         <activity android:name="com.travels.android.main.MainActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER"/>

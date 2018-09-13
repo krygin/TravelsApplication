@@ -1,5 +1,6 @@
 import com.android.build.gradle.FeaturePlugin
 import com.android.build.gradle.LibraryPlugin
+import com.travels.android.build_src.Dependencies
 import com.travels.android.build_src.Versions
 import com.travels.android.build_src.plugins.AnyAndroidPlugin
 import com.travels.android.build_src.plugins.ApplicationPlugin
@@ -7,6 +8,7 @@ import com.travels.android.build_src.util.withType
 import com.travels.android.build_src.util.android
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator
+import kotlin.reflect.full.memberProperties
 
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
@@ -38,7 +40,7 @@ val clean by tasks.creating(Delete::class) {
 }
 
 val wrapper by tasks.creating(Wrapper::class) {
-    version = "4.9.1-rc-1"
+    version = "4.10.1"
     distributionType = Wrapper.DistributionType.BIN
 }
 
