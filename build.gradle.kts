@@ -8,13 +8,11 @@ import com.travels.android.build_src.util.withType
 import com.travels.android.build_src.util.android
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator
-import kotlin.reflect.full.memberProperties
-
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    val kotlinVersion: String by System.getProperties()
-    val gradlePluginVersion: String by System.getProperties()
+    val kotlinVersion: String by project
+    val gradlePluginVersion: String by project
     repositories {
         google()
         jcenter()

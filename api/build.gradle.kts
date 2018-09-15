@@ -6,6 +6,7 @@ plugins {
 }
 
 dependencies {
+    implementation(Dependencies.kotlinStdLib)
     implementation(Dependencies.rxKotlin)
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitRxJavaAdapter)

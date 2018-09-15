@@ -3,6 +3,7 @@ package com.travels.android.build_src.plugins
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
+import org.jetbrains.kotlin.js.translate.context.Namer.kotlin
 
 abstract class TravelsMarkerPlugin: Plugin<Project>
 
@@ -28,7 +29,6 @@ class AndroidFeaturePlugin: AnyAndroidPlugin() {
 
 class KotlinLibraryPlugin: TravelsMarkerPlugin() {
     override fun apply(project: Project) {
-        project.apply(plugin="java-library")
         project.apply(plugin="kotlin")
     }
 }
