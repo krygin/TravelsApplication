@@ -21,7 +21,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 import javax.inject.Inject
 
-class CreateNewJourneyActivity : AppCompatActivity() {
+class CreateJourneyActivity : AppCompatActivity() {
 
     @Inject
     lateinit var createNewJourneyViewModelFactory: CreateNewJourneyViewModelFactory
@@ -87,4 +87,4 @@ class CreateNewJourneyActivity : AppCompatActivity() {
     }
 }
 
-fun createCreateJourneyActivityIntent(context: Context) = Intent(context, CreateNewJourneyActivity::class.java)
+fun createCreateJourneyActivityIntent(context: Context) = Intent(context, CreateJourneyActivity::class.java)
