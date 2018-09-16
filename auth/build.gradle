@@ -8,7 +8,7 @@ apply plugin: 'kotlin-kapt'
 dependencies {
     implementation(
             project(':base'),
-            project(':api')
+            project(':data')
     )
 
     implementation(

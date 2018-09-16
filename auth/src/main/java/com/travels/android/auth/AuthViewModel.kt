@@ -29,6 +29,10 @@ class AuthViewModel(
                         )
         )
     }
+
+    override fun onCleared() {
+        disposables.clear()
+    }
 }
 
 data class AuthResult(val username: String, val accountType: String)

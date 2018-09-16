@@ -23,10 +23,12 @@ class DateRangePicker : DialogFragment() {
         return AlertDialog.Builder(context, theme)
                 .setView(materialCalendarView)
                 .setTitle("Select date range")
-                .setPositiveButton("Confirm", { dialog, which ->
+                .setPositiveButton("Confirm") { dialog, which ->
                     val selectedDates = materialCalendarView.selectedDates
-                    dateRangeSelectedListener(selectedDates.first().date, selectedDates.last().date)
-                })
+                    if (selectedDates.isNotEmpty()) {
+                        dateRangeSelectedListener(selectedDates.first().date, selectedDates.last().date)
+                    }
+                }
                 .setNeutralButton("Cancel", { dialog, which -> })
                 .create()
     }

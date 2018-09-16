@@ -6,7 +6,7 @@ import com.travels.android.base.di.ComponentDependencies
 import com.travels.android.base.di.ComponentDependenciesKey
 import com.travels.android.base.di.NetworkModule
 import com.travels.android.base.di.PersistenceModule
-import com.travels.android.main.search.create.di.CreateNewJourneyDependencies
+import com.travels.android.journeys.create.di.CreateNewJourneyDependencies
 import dagger.Binds
 import dagger.BindsInstance
 import dagger.Component
@@ -21,7 +21,7 @@ annotation class MainActivityScope
 
 @Singleton
 @Component(
-        modules = [ApplicationModule::class, NetworkModule::class, PersistenceModule::class, ComponentDependenciesModule::class]
+        modules = [ApplicationModule::class, NetworkModule::class, PersistenceModule::class, ComponentDependenciesModule::class, NavigationModule::class]
 )
 internal interface ApplicationComponent :
         AuthDependencies,

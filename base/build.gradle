@@ -13,59 +13,40 @@ android {
 }
 
 dependencies {
-    api(
-            Dependencies.appCompatV7,
-            Dependencies.kotlinStdLib,
-            Dependencies.design,
-            "com.google.code.findbugs:jsr305:3.0.2"
-    )
 
     application project(':app')
     feature project(':main')
 
 
-    // RETROFIT
+
+    implementation(
+            project(":data")
+    )
+
     api(
             Dependencies.moshiKotlin,
             Dependencies.retrofitMoshiConverter,
             Dependencies.okHttpLoggingInterceptor,
             Dependencies.retrofitRxJavaAdapter,
-            Dependencies.retrofit
-    )
-
-    //LIFECYCLE
-    api(
+            Dependencies.retrofit,
             Dependencies.androidArchitectureLifecycleExtensions,
-            Dependencies.androidArchitectureLifecycleReactiveStreams
-    )
-
-    kapt(
-            Dependencies.androidArchitectureLifecycleCompiler
-    )
-
-    // PERSISTENCE
-    api(
-            Dependencies.androidArchitecturePersistenceRoomRuntime
-    )
-
-    kapt(
-            Dependencies.androidArchitecturePersistenceRoomCompiler
-    )
-
-    //DAGGER
-    api(
-            Dependencies.dagger
-    )
-
-    kapt(
-            Dependencies.daggerCompiler
-    )
-
-    //RX
-    api(
+            Dependencies.androidArchitectureLifecycleReactiveStreams,
+            Dependencies.androidArchitecturePersistenceRoomRuntime,
             Dependencies.rxJava,
             Dependencies.rxAndroid,
-            Dependencies.rxKotlin
+            Dependencies.rxKotlin,
+            Dependencies.rxBindingAppCompatV7Kotlin,
+            Dependencies.appCompatV7,
+            Dependencies.kotlinStdLib,
+            Dependencies.design,
+            Dependencies.dagger,
+            "com.google.code.findbugs:jsr305:3.0.2"
+    )
+
+    kapt(
+            Dependencies.androidArchitecturePersistenceRoomCompiler,
+            Dependencies.androidArchitectureLifecycleCompiler,
+            Dependencies.daggerCompiler
     )
 
 }

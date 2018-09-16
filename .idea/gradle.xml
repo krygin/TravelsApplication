@@ -8,16 +8,21 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/api" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/auth" />
             <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/design" />
             <option value="$PROJECT_DIR$/design/date-range-picker" />
             <option value="$PROJECT_DIR$/design/route-widget" />
             <option value="$PROJECT_DIR$/instantapp" />
+            <option value="$PROJECT_DIR$/journeys" />
+            <option value="$PROJECT_DIR$/journeys-create" />
+            <option value="$PROJECT_DIR$/journeys-filter" />
+            <option value="$PROJECT_DIR$/journeys/domain" />
             <option value="$PROJECT_DIR$/main" />
+            <option value="$PROJECT_DIR$/main-search" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

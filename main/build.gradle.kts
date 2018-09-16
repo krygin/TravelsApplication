@@ -8,8 +8,9 @@ plugins {
 
 dependencies {
     implementation(Dependencies.kotlinStdLib)
+    implementation(project(":main-search"))
     implementation(project(":base"))
-    implementation(project(":api"))
+    implementation(project(":data"))
     implementation(Dependencies.androidArchitectureNavigationUI)
     implementation(Dependencies.androidArchitectureNavigationFragment)
     implementation(Dependencies.googlePlayServicesMaps)
@@ -23,9 +24,6 @@ dependencies {
     implementation(project(":design:route-widget"))
 
     kapt(Dependencies.daggerCompiler)
-
-    implementation("com.android.support:design:28.0.0-alpha3")
-    implementation("com.android.support:support-v4:27.0.2")
 
 
 }

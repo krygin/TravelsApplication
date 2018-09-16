@@ -1,5 +1,4 @@
 import com.travels.android.build_src.Dependencies
-import com.travels.android.build_src.Versions
 
 apply plugin: 'com.travels.application'
 apply plugin: 'kotlin-android'
@@ -38,7 +37,8 @@ dependencies {
             project(':main'),
             project(':auth'),
             project(':base'),
-            project(':api'),
+            project(':journeys-create'),
+            project(':journeys-filter'),
             Dependencies.dagger
     )
 
