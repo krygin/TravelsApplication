@@ -1,4 +1,4 @@
-package com.travels.android.journeys.domain
+package com.travels.android.api.journeys
 
 import io.reactivex.Single
 

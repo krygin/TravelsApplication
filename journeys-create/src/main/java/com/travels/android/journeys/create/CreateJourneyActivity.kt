@@ -11,11 +11,11 @@ import android.view.Menu
 import android.view.MenuItem
 import com.travels.android.base.di.findComponentDependencies
 import com.travels.android.base.domain.Response
+import com.travels.android.design.widget.Location
+import com.travels.android.design.widget.Place
 import com.travels.android.design.widget.RouteItem
 import com.travels.android.design.widget.RouteLayout
-import com.travels.android.design.widget.model.PointInfo
 import com.travels.android.journeys.create.di.DaggerCreateNewJourneyComponent
-import com.travels.android.journeys.create.domain.toPlace
 import com.travels.android.journeys.create.util.CreateNewJourneyViewModelFactory
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
@@ -45,7 +45,7 @@ class CreateJourneyActivity : AppCompatActivity() {
                 .get(CreateNewJourneyViewModel::class.java)
         viewModel.route.observe(this, Observer {
             it?.let {
-                routeLayout.setRoutes(it.map { RouteItem(it.place.toPlace(), it.arrival, it.departure) })
+                routeLayout.setRoutes(it.map { it.toRouteItem() })
             }
         })
         viewModel.places.observe(this, Observer {
@@ -54,8 +54,7 @@ class CreateJourneyActivity : AppCompatActivity() {
                     is Response.Loading -> {
                     }
                     is Response.Success -> routeLayout.setPlaces(it.data.map { it.toPlace() })
-                    is Response.Failure -> {
-                    }
+                    is Response.Failure -> { }
                 }
             }
         })
@@ -65,7 +64,7 @@ class CreateJourneyActivity : AppCompatActivity() {
 
         disposables += routeLayout.routeChanges.subscribe {
             it?.let {
-                viewModel.updateJourneyRoutes(it.map { PointInfo(it.place, it.arrivalDate, it.departureDate) })
+                viewModel.updateJourneyRoutes(it.map { it.toRouteItem() })
             }
 
         }
@@ -88,3 +87,16 @@ class CreateJourneyActivity : AppCompatActivity() {
 }
 
 fun createCreateJourneyActivityIntent(context: Context) = Intent(context, CreateJourneyActivity::class.java)
+
+
+private fun RouteItem.toRouteItem() = com.travels.android.api.journeys.RouteItem("", arrivalDate!!, departureDate!!, place!!.toPlace())
+
+private fun Place.toPlace() = com.travels.android.api.journeys.Place("", title!!, location!!.toLocation())
+
+private fun Location.toLocation() = com.travels.android.api.journeys.Location(lat, lng)
+
+private fun com.travels.android.api.journeys.RouteItem.toRouteItem() = RouteItem(place.toPlace(), arrival, departure)
+
+private fun com.travels.android.api.journeys.Place.toPlace() = Place(title, location.toLocation())
+
+private fun com.travels.android.api.journeys.Location.toLocation() = Location(lat, lng)

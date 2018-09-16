@@ -1,7 +1,5 @@
-package com.travels.android.journeys.domain
+package com.travels.android.api.journeys
 
-import com.travels.android.api.journeys.JourneyDAO
-import com.travels.android.api.journeys.JourneysApi
 import io.reactivex.Single
 
 class PlacesRepositoryImpl(private val journeysApi: JourneysApi, private val journeyDao: JourneyDAO) : PlacesRepository {

@@ -12,7 +12,6 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import com.jakewharton.rxrelay2.BehaviorRelay
-import com.travels.android.design.widget.model.Place
 import com.travels.android.design.widget.route_widget.R
 import java.text.DateFormat
 import java.text.SimpleDateFormat

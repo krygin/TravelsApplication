@@ -13,8 +13,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
-import com.travels.android.journeys.domain.Location
-import com.travels.android.journeys.domain.Place
+import com.travels.android.api.journeys.Location
+import com.travels.android.api.journeys.Place
 import com.travels.android.main.search.R
 
 class MapSearchFragment : Fragment(), OnMapReadyCallback {

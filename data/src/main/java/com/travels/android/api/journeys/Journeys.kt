@@ -1,9 +1,4 @@
-package com.travels.android.journeys.domain
-
-import com.travels.android.api.journeys.JourneyApiModel
-import com.travels.android.api.journeys.LocationApiModel
-import com.travels.android.api.journeys.PlaceApiModel
-import com.travels.android.api.journeys.RouteItemApiModel
+package com.travels.android.api.journeys
 
 
 fun Journey.toJourneyApiModel() = JourneyApiModel(id, title, description, route.toRouteApiModelList())

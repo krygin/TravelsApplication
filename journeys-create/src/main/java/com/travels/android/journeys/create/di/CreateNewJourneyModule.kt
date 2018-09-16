@@ -5,9 +5,9 @@ import com.travels.android.api.journeys.JourneysApi
 import com.travels.android.base.di.PerActivity
 import com.travels.android.base.persistence.TravelsDatabase
 import com.travels.android.journeys.domain.GetSuggestedPlacesUseCase
-import com.travels.android.journeys.domain.PlacesRepositoryImpl
+import com.travels.android.api.journeys.PlacesRepositoryImpl
 import com.travels.android.journeys.create.util.CreateNewJourneyViewModelFactory
-import com.travels.android.journeys.domain.PlacesRepository
+import com.travels.android.api.journeys.PlacesRepository
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

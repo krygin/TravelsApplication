@@ -1,7 +1,6 @@
 package com.travels.android.design.widget
 
 import android.content.Context
-import android.content.DialogInterface
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.AppCompatEditText
 import android.support.v7.widget.LinearLayoutManager
@@ -9,10 +8,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.*
 import com.jakewharton.rxbinding2.widget.textChanges
-import com.travels.android.design.widget.model.Location
-import com.travels.android.design.widget.model.Place
-import io.reactivex.Observable
-import java.util.*
 
 class SelectPlaceDialog(context: Context) : AlertDialog(context) {
 

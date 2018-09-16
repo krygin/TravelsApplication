@@ -5,9 +5,12 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import android.util.Log
+import com.travels.android.api.journeys.Journey
+import com.travels.android.api.journeys.Location
+import com.travels.android.api.journeys.Place
+import com.travels.android.api.journeys.RouteItem
 import com.travels.android.base.domain.Response
-import com.travels.android.design.widget.model.PointInfo
-import com.travels.android.journeys.domain.*
+import com.travels.android.journeys.domain.GetSuggestedPlacesUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
@@ -36,8 +39,8 @@ class CreateNewJourneyViewModel(private val getSuggestedPlacesUseCase: GetSugges
         this.journey.value = updatedJourney
     }
 
-    fun updateJourneyRoutes(route: List<PointInfo>) {
-        journey.value = journey.value?.copy(route = route.toRouteItemList())
+    fun updateJourneyRoutes(route: List<RouteItem>) {
+        journey.value = journey.value?.copy(route = route)
     }
 
     fun getPlaces(query: String) {
@@ -52,6 +55,7 @@ class CreateNewJourneyViewModel(private val getSuggestedPlacesUseCase: GetSugges
     }
 
     fun saveJourney(journey: Journey) {
+
         Log.d("CreateJourney", journey.toString())
     }
 
@@ -66,10 +70,3 @@ private fun createDummyPointInfoList(): List<RouteItem> {
     )
 }
 
-private fun List<PointInfo>.toRouteItemList() = map { it.toRouteItem() }
-
-private fun PointInfo.toRouteItem() = RouteItem("", arrival!!, departure!!, place!!.toPlace())
-
-private fun com.travels.android.design.widget.model.Place.toPlace() = Place("", title, location!!.toLocation())
-
-private fun com.travels.android.design.widget.model.Location.toLocation() = Location(lat, lng)
