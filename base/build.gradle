@@ -38,6 +38,7 @@ dependencies {
             Dependencies.rxBindingAppCompatV7Kotlin,
             Dependencies.appCompatV7,
             Dependencies.kotlinStdLib,
+            Dependencies.androidArchitecturePresistenceRoomRxJava,
             Dependencies.design,
             Dependencies.dagger,
             "com.google.code.findbugs:jsr305:3.0.2"

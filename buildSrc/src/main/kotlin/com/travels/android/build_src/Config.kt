@@ -38,6 +38,7 @@ object Dependencies {
 
     const val androidArchitecturePersistenceRoomRuntime = "android.arch.persistence.room:runtime:1.1.1-rc1"
     const val androidArchitecturePersistenceRoomCompiler = "android.arch.persistence.room:compiler:1.1.1-rc1"
+    const val androidArchitecturePresistenceRoomRxJava = "android.arch.persistence.room:rxjava2:1.1.1-rc1"
 
     const val androidArchitectureNavigationFragment = "android.arch.navigation:navigation-fragment-ktx:$navigationVersion"
     const val androidArchitectureNavigationUI = "android.arch.navigation:navigation-ui-ktx:$navigationVersion"
