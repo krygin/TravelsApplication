@@ -12,15 +12,13 @@ class PlacesRepositoryImpl(private val journeysApi: JourneysApi, private val jou
     }
 
     override fun saveJourney(journey: Journey): Single<Journey> {
-        return journeyDao.saveJourney(journey.toJourneyModel())
-                .flatMap { journeyId ->
-                    journeyDao.saveRoutes(*journey.route.map { routeItem -> routeItem.toRouteModel() }.toTypedArray())
-                            .map { journeyId }
-                }
-                .flatMap {
-                    journeyDao.getJourney(it).map {
-                        journeyModel -> journeyModel.toJourney() }
-                }
+        return Single.fromCallable {
+            val journeyId = journeyDao.saveJourney(journey.toJourneyModel())
+            val routeIds = journeyDao.saveRoutes(*journey.route.map { routeItem -> routeItem.toRouteModel() }.toTypedArray())
+            val routes = journeyDao.getRoutes(routeIds)
+            val journeyModel = journeyDao.getJourney(journeyId)
+            return@fromCallable journeyModel.toJourney().apply { route = routes.map { it.toRoute() } }
+        }
     }
 
     override fun getJourneys(): Single<List<Journey>> {

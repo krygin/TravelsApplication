@@ -38,7 +38,7 @@ val clean by tasks.creating(Delete::class) {
 }
 
 val wrapper by tasks.creating(Wrapper::class) {
-    version = "4.10.1"
+    version = "4.10.2"
     distributionType = Wrapper.DistributionType.BIN
 }
 

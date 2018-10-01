@@ -11,11 +11,14 @@ interface JourneyDAO {
     fun allJourneys(): Single<List<JourneyModel>>
 
     @Insert
-    fun saveJourney(journeyModel: JourneyModel): Single<Long>
+    fun saveJourney(journeyModel: JourneyModel): Long
 
     @Insert
-    fun saveRoutes(vararg routeItemModel: RouteItemModel): Single<List<Long>>
+    fun saveRoutes(vararg routeItemModel: RouteItemModel): List<Long>
 
     @Query("SELECT * FROM journey WHERE uid = :journeyId")
-    fun getJourney(journeyId: Long): Single<JourneyModel>
+    fun getJourney(journeyId: Long): JourneyModel
+
+    @Query("SELECT * FROM route WHERE uid IN (:routeIds)")
+    fun getRoutes(routeIds: List<Long>): List<RouteItemModel>
 }

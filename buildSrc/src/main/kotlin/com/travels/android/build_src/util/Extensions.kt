@@ -11,3 +11,7 @@ fun ExtensionContainer.android(configure: BaseExtension.() -> Unit) {
             ?: findByType(FeatureExtension::class.java)?.let(configure)
             ?: findByType(LibraryExtension::class.java)?.let(configure)
 }
+
+fun ExtensionContainer.feature(configure: FeatureExtension.() -> Unit) {
+    findByType(FeatureExtension::class.java)?.let(configure)
+}

@@ -23,19 +23,15 @@ fun PlaceApiModel.toPlace() = Place(id, title, location.toLocation())
 fun LocationApiModel.toLocation() = Location(lat, lng)
 
 
-fun Journey.toJourneyModel() = JourneyModel(id = id, title = title, description = description, route = emptyList())
+fun Journey.toJourneyModel() = JourneyModel(id = id, title = title, description = description)
 
 fun RouteItem.toRouteModel() = RouteItemModel(id = id, arrival = arrival, departure = departure, place = place.toPlaceModel())
 
-fun Place.toPlaceModel() = PlaceModel(id = id, title = title, location = location.toLocationModel())
-
-fun Location.toLocationModel() = LocationModel(lat, lng)
+fun Place.toPlaceModel() = PlaceModel(id = id, title = title, lat = location.lat, lng = location.lng)
 
 
-fun JourneyModel.toJourney() = Journey(id, title, description, route.map { it.toRoute() })
+fun JourneyModel.toJourney() = Journey(id, title, description, emptyList())
 
 fun RouteItemModel.toRoute() = RouteItem(id, arrival, departure, place.toPlace())
 
-fun PlaceModel.toPlace() = Place(id, title, location.toLocation())
-
-fun LocationModel.toLocation() = Location(lat, lng)
+fun PlaceModel.toPlace() = Place(id, title, Location(lat, lng))
