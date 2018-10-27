@@ -4,7 +4,7 @@ import android.arch.persistence.room.TypeConverter
 import java.util.Date
 
 
-object DateTimeConverter {
+class DateTimeConverter {
 
     @TypeConverter
     fun fromTimestamp(value: Long?): Date? {

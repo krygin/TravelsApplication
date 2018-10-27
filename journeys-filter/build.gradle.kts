@@ -9,4 +9,6 @@ plugins {
 dependencies {
     implementation(project(":base"))
     implementation(project(":design:date-range-picker"))
+    implementation(Dependencies.chipsInputLayout)
+
 }

@@ -1,18 +1,13 @@
-import com.android.build.api.dsl.extension.FeatureExtension
+import com.android.build.gradle.FeatureExtension
 import com.travels.android.build_src.Dependencies
-import com.travels.android.build_src.util.feature
 
 plugins {
     id("com.travels.feature")
-    id("kotlin-android")
     id("kotlin-kapt")
 }
 
-extensions.feature {
-    defaultConfig {
-        baseFeature = true
-
-    }
+configure<FeatureExtension> {
+    baseFeature = true
 }
 
 dependencies {
@@ -40,7 +35,6 @@ dependencies {
     api(Dependencies.androidArchitecturePresistenceRoomRxJava)
     api(Dependencies.design)
     api(Dependencies.dagger)
-    api("com.google.code.findbugs:jsr305:3.0.2")
 
     kapt(Dependencies.androidArchitecturePersistenceRoomCompiler)
     kapt(Dependencies.androidArchitectureLifecycleCompiler)

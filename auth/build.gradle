@@ -2,7 +2,6 @@ import com.travels.android.build_src.Dependencies
 import com.travels.android.build_src.Versions
 
 apply plugin: 'com.travels.feature'
-apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 dependencies {
@@ -14,7 +13,9 @@ dependencies {
     implementation(
             Dependencies.kotlinStdLib,
             Dependencies.rxJava,
-            Dependencies.rxAndroid
+            Dependencies.rxAndroid,
+            Dependencies.constraintLayout
+
     )
 
     //DAGGER

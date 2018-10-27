@@ -9,6 +9,7 @@ plugins {
 dependencies {
     implementation(project(":base"))
     implementation(project(":journeys:domain"))
+    implementation(Dependencies.constraintLayout)
     implementation(Dependencies.androidArchitectureNavigationUI)
     implementation(Dependencies.androidArchitectureNavigationFragment)
     implementation(Dependencies.dagger)

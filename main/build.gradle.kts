@@ -19,7 +19,7 @@ dependencies {
     implementation(Dependencies.rxBindingAppCompatV7Kotlin)
     implementation(Dependencies.rxBindingSupportV4Kotlin)
     implementation(Dependencies.rxRelay2)
-    implementation("com.github.tylersuehr7:chips-input-layout:2.3")
+    implementation(Dependencies.chipsInputLayout)
     implementation(project(":design:date-range-picker"))
     implementation(project(":design:route-widget"))
 

@@ -11,6 +11,7 @@ dependencies {
     implementation(project(":design:route-widget"))
     implementation(project(":journeys:domain"))
     implementation(Dependencies.rxRelay2)
+    implementation(Dependencies.chipsInputLayout)
     implementation(Dependencies.dagger)
     kapt(Dependencies.daggerCompiler)
 }
