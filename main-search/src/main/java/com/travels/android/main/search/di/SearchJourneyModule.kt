@@ -1,22 +1,20 @@
-package com.travels.android.journeys.create.di
+package com.travels.android.main.search.di
 
 import com.travels.android.api.journeys.JourneyDAO
 import com.travels.android.api.journeys.JourneysApi
+import com.travels.android.api.journeys.PlacesRepository
+import com.travels.android.api.journeys.PlacesRepositoryImpl
 import com.travels.android.base.di.PerActivity
 import com.travels.android.base.persistence.TravelsDatabase
+import com.travels.android.journeys.domain.GetJourneysUseCase
 import com.travels.android.journeys.domain.GetSuggestedPlacesUseCase
-import com.travels.android.api.journeys.PlacesRepositoryImpl
-import com.travels.android.journeys.create.util.CreateNewJourneyViewModelFactory
-import com.travels.android.api.journeys.PlacesRepository
-import com.travels.android.journeys.domain.SaveJourneyUseCase
-import dagger.Binds
+import com.travels.android.main.search.util.SearchJourneyViewModelFactory
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 
 @Module
-class CreateNewJourneyModule {
-
+class SearchJourneyModule {
     @Provides
     @PerActivity
     fun providerPlacesApi(retrofit: Retrofit): JourneysApi {
@@ -42,15 +40,12 @@ class CreateNewJourneyModule {
     }
 
     @Provides
-    @PerActivity
-    fun provideSaveJourneyUseCase(placesRepository: PlacesRepository): SaveJourneyUseCase {
-        return SaveJourneyUseCase(placesRepository)
+    fun provideGetJourneysUseCase(placesRepository: PlacesRepository): GetJourneysUseCase {
+        return GetJourneysUseCase(placesRepository)
     }
 
     @Provides
-    @PerActivity
-    fun provideCreateNewJourneyViewModelFactory(getSuggestedPlacesUseCase: GetSuggestedPlacesUseCase, saveJourneyUseCase: SaveJourneyUseCase): CreateNewJourneyViewModelFactory {
-        return CreateNewJourneyViewModelFactory(getSuggestedPlacesUseCase, saveJourneyUseCase)
+    fun provideSearchJourneyViewModelFactory(getJourneysUseCase: GetJourneysUseCase): SearchJourneyViewModelFactory {
+        return SearchJourneyViewModelFactory(getJourneysUseCase)
     }
-
 }

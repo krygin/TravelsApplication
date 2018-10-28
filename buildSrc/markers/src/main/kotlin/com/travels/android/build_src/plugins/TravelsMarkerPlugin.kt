@@ -40,6 +40,7 @@ class AndroidFeaturePlugin : AnyAndroidPlugin() {
 class KotlinLibraryPlugin : TravelsMarkerPlugin() {
     override fun apply(project: Project) {
         project.apply {
+            plugin("java-library")
             plugin("kotlin")
         }
     }

@@ -11,13 +11,17 @@ import com.travels.android.api.journeys.Place
 import com.travels.android.api.journeys.RouteItem
 import com.travels.android.base.domain.Response
 import com.travels.android.journeys.domain.GetSuggestedPlacesUseCase
+import com.travels.android.journeys.domain.SaveJourneyUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.schedulers.Schedulers
 import java.util.*
 
-class CreateNewJourneyViewModel(private val getSuggestedPlacesUseCase: GetSuggestedPlacesUseCase) : ViewModel() {
+class CreateNewJourneyViewModel(
+        private val getSuggestedPlacesUseCase: GetSuggestedPlacesUseCase,
+        private val saveJourneyUseCase: SaveJourneyUseCase
+) : ViewModel() {
 
     val journey: MutableLiveData<Journey> = MutableLiveData()
 
@@ -55,8 +59,12 @@ class CreateNewJourneyViewModel(private val getSuggestedPlacesUseCase: GetSugges
     }
 
     fun saveJourney(journey: Journey) {
-
-        Log.d("CreateJourney", journey.toString())
+        disposables += saveJourneyUseCase.execute(journey)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    Log.e("TAG", "SUCESS")
+                }, { Log.e("TAG", "FAIL", it) })
     }
 
 }

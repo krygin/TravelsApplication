@@ -1,7 +1,7 @@
 import com.travels.android.build_src.Dependencies
 import com.travels.android.build_src.Versions
 
-apply plugin: 'com.travels.feature'
+apply plugin: 'com.travels.library'
 apply plugin: 'kotlin-kapt'
 
 dependencies {

@@ -28,7 +28,7 @@ class JourneyModel(
 )
 class RouteItemModel(
         @ColumnInfo(name = "uid") @PrimaryKey(autoGenerate = true) val uid: Long? = null,
-        @ColumnInfo(name = "journey_uid") val ownerId: Long? = null,
+        @ColumnInfo(name = "journey_uid") val journeyId: Long? = null,
         @ColumnInfo(name = "id") val id: String,
         @ColumnInfo(name = "arrival") val arrival: Date,
         @ColumnInfo(name = "departure") val departure: Date,

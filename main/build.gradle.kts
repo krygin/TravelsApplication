@@ -1,14 +1,14 @@
 import com.travels.android.build_src.Dependencies
 
 plugins {
-    id("com.travels.feature")
+    id("com.travels.library")
     id("kotlin-kapt")
 }
 
 
 dependencies {
     implementation(Dependencies.kotlinStdLib)
-    implementation(project(":main-search"))
+    api(project(":main-search"))
     implementation(project(":base"))
     implementation(project(":data"))
     implementation(Dependencies.androidArchitectureNavigationUI)

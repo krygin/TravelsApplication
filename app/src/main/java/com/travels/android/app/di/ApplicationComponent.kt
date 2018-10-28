@@ -7,6 +7,7 @@ import com.travels.android.base.di.ComponentDependenciesKey
 import com.travels.android.base.di.NetworkModule
 import com.travels.android.base.di.PersistenceModule
 import com.travels.android.journeys.create.di.CreateNewJourneyDependencies
+import com.travels.android.main.search.di.SearchJourneyDependencies
 import dagger.Binds
 import dagger.BindsInstance
 import dagger.Component
@@ -25,7 +26,8 @@ annotation class MainActivityScope
 )
 internal interface ApplicationComponent :
         AuthDependencies,
-        CreateNewJourneyDependencies {
+        CreateNewJourneyDependencies,
+        SearchJourneyDependencies {
     fun inject(application: TravelsApplication)
 
     @Component.Builder
@@ -50,4 +52,9 @@ private abstract class ComponentDependenciesModule private constructor() {
     @IntoMap
     @ComponentDependenciesKey(CreateNewJourneyDependencies::class)
     abstract fun provideCreateNewJourneyDependencies(component: ApplicationComponent): ComponentDependencies
+
+    @Binds
+    @IntoMap
+    @ComponentDependenciesKey(SearchJourneyDependencies::class)
+    abstract fun provideSearchJourneyDependencies(component: ApplicationComponent): ComponentDependencies
 }

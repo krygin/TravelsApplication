@@ -2,19 +2,11 @@ import com.android.build.gradle.FeatureExtension
 import com.travels.android.build_src.Dependencies
 
 plugins {
-    id("com.travels.feature")
+    id("com.travels.library")
     id("kotlin-kapt")
 }
 
-configure<FeatureExtension> {
-    baseFeature = true
-}
-
 dependencies {
-
-    application(project(":app"))
-    feature(project(":main"))
-
 
     implementation(project(":data"))
 

@@ -25,7 +25,7 @@ fun LocationApiModel.toLocation() = Location(lat, lng)
 
 fun Journey.toJourneyModel() = JourneyModel(id = id, title = title, description = description)
 
-fun RouteItem.toRouteModel() = RouteItemModel(id = id, arrival = arrival, departure = departure, place = place.toPlaceModel())
+fun RouteItem.toRouteModel(journeyId: Long) = RouteItemModel(id = id, journeyId = journeyId, arrival = arrival, departure = departure, place = place.toPlaceModel())
 
 fun Place.toPlaceModel() = PlaceModel(id = id, title = title, lat = location.lat, lng = location.lng)
 

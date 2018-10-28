@@ -6,7 +6,7 @@ plugins {
 }
 
 dependencies {
-    compile(project(":data"))
+    api(project(":data"))
     implementation(Dependencies.kotlinStdLib)
     implementation(Dependencies.rxKotlin)
 }
