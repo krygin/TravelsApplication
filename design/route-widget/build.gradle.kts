@@ -6,6 +6,8 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":data"))
+
     implementation(Dependencies.kotlinStdLib)
     implementation(Dependencies.appCompatV7)
     implementation(Dependencies.design)
